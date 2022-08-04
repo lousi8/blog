@@ -1,69 +1,56 @@
-# 入骨影评
+# 关于写博客这件事
 
-#### 介绍
-公众号【入骨影评】，专注于热播电视剧、电影的深度赏析，尤其喜爱古装电视剧，合作请直接联系我私人微信: dingdingxxyyzz
+## 项目背景
+我是一个从2017.6.28开始坚持天天写公众号的人，但是不会公众号那些复杂的排版，我的公众号所有文章也就是一堆文字加几张图，偶尔有小标题1，2，3和字体加粗，相当于一个天天写博客的人吧。
 
-#### 历史
-本公众号创建于2017年6月28日,目前在各大平台均为原创加V优质创作者，其中百家号粉丝4.6万，微博粉丝2.6万，知乎粉丝2.1万，大鱼号粉丝1.8万，头条号粉丝6000+
+## 写作历史
+1. 我从一开始一直都是用一个叫作“简媒”的工具，免费，纯网页版，登录进去，码字再上传本地图片，写好以后这文章可以随意copy到任何自媒体平台的编辑器中(比如公众号的剪辑器界面中)完全不变样。当时不太懂，后来发现这个工具实际上把我所有上传的图片都传到它自己的服务器上了，有一个可以外链的图片地址，写好后的文章被它整成了html格式，所以能copy到任何编辑器中。
+2. 用了几年之后这个工具突然发公告说不再提供服务了。我于是开始使用一个叫[易撰](https://zmt.yizhuan5.com/work.html#4-2)的工具，免费，也是纯网页版，工作原理和“简媒”一样，原理依然是它把我所有上传的图片都传到它自己的服务器上，有一个可以外链的图片地址，写好后的文章被它整成了html格式。
+3. 找了几个收费的自媒体编辑软件，比如[融媒宝](https://www.17van.com/)，发现它所有的图片都保存在本地，完全没有图床功能。[蚂小二](https://cpc.yixiaoer.cn/)也一样。
+4. 2021年8月发生了一些大家都知道的事情，一些发表了很久的文章消失不见了！这时偶然发现我的“易撰”草稿箱里的老文章里的图片集体消失了(准确地说是图片外链失效了)，只有大概最近几天的文章图片还在！文章我自己有多处备份，但是图片我并没有特意备份啊！回头再去看看“简媒”的后台，这个网站居然一直都没倒闭，我的历史文章和草稿箱文章一直都在，但是所有图片也无法显示了。再看公众号，草稿箱也升级了，已发布记录都在，但是公众号的所有图片都带有水印而且根本无法外链！这下我彻底慌了！
+5. 慌了一阵子才想起来我其实也是一个码农，这点事应该用码农的方式来解决！
 
 
-#### 各大主流自媒体平台的主页
+### 一、需要一个图床放图片
+要求：大厂出品，尽可能活得长，国内能顺畅访问，图片支持外链，不限速不限流，最好免费（我不怕收费但是我这个人很可能会忘记每年继费）
+考察了一圈选择了码农才会选的gitee。有pages服务。缺陷：图片不能大于1M。
+后来又找了coding。图片似乎没有大小限制。缺陷：pages服务有可能需要收费，域名很难搞。
+1. 软件picgo,安装github plus插件以后可以上传图片到gitee了。
+   缺点：可以配置快捷键使用剪切板上传功能，但是这样上传的图片是png格式而且远远比原文件大。研究了一下这个比较适合屏幕截图并使用剪切板上传，本地已存在的图片不要使用剪切板。
+   解决方式：everything 1.5a过滤出图片，然后右键用xnview重整尺寸，搞到1M以下。小部分使用一款“图压”软件或者TinyPNG网站搞到1M以下。有些gif文件很难压缩，手工选择上传到coding图床。因为需要用到picgo的“上传时按日期重命名”功能，暂定gitee为主，使用git同步到coding。
+2. 关于Gitee限制图片大于1M访问的处理方案
+   使用第三方图片压缩工具进行压缩，之后再进行上传。推荐 compressjpeg
+   启用Gitee的pages功能(非付费用户上传图片之后需要手动进行pages服务的部署)，需要替换域名为pages的域名。
+3. 软件picuploader
+   缺陷：需要安装php环境，不是很方便。
+4. 网站picx，只支持github图床
+   https://picx.xpoet.cn/#/upload
+5. 软件repo-image-hosting,支持gitee/github图床
+   https://github.com/hezhizheng/repo-image-hosting
+6. TyoraUpload
+   https://gitee.com/cwayteam/TyporaUpload
+   gitee大于1M图片自动转Pages地址并自动部署（需开启Pages功能，每上传一次点一次更新）
+   Gitee Pages可以解决超过1M的图片只能在登陆后显示的问题，仓库开启Gitee Pages，你上传的图片可通过Pages的链接查看，并且无1M限制。因此在这里用lt跟gt对上传图片大小做了判断，超过1M返回Pages的地址，并对Pages进行重新部署。
+   
+  2022.03.25更新：[gitee图床方案失效](https://meta.appinn.net/t/topic/31113)。[转移](https://meta.appinn.net/t/topic/31113/21?u=lousi)到收费的腾讯云对象存储和七牛云。工具用picgo+插件。工具依然不满意，在寻找一个合适的[md编辑器](https://meta.appinn.net/t/topic/30662)。
 
-1.  [百家号](https://baijiahao.baidu.com/u?app_id=1571458584157545)
-2.  [头条号](https://www.toutiao.com/c/user/62633358611/#mid=1571456146362369)
-3.  [公众号](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1760550691569188866)
-4.  [新浪看点](http://k.sina.com.cn/mediaDocList.d.html?uid=2851781302)
-5.  [搜狐号](https://mp.sohu.com/profile?xpt=bG91c2kyQHNvaHUuY29t)
-6.  [大鱼号](http://a.mp.uc.cn/media.html?uc_param_str=frdnsnpfvecpntnwprdssskt&mid=aa9d2ba4ff0f41b7be878f2a57f08d07)
-7.  [企鹅号](https://media.om.qq.com/author?id=Mi98P-Y7er_8IQCLSvNv3QCw0)
-8.  [快传号](https://www.360kuai.com/mob/zmt?id=179525112&uid=c6ccd0582895e1fa357d04e2299305b7&sign=llq#text)
-9.  [网易号](https://www.163.com/dy/media/T1499052557801.html)
-10. [一点号](https://www.yidianzixun.com/channel/m481787)
-11. [快看点](https://www.yuncheapp.cn/html/pearl/share/uCenter/index.html?id=5xwa4qfssju8jei&sstoken=Ydf77EoHFwJXMgr_BA8LqA)
-12. [大风号](https://ishare.ifeng.com/mediaShare/home/1367439/media?aman=aU036u848kb24Ne8fD822&gud=103593j849)
-13. [凯迪号](https://www.9kd.com/note/3824571)
-14. [惠头条](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1312448474440499200)
-15. [微博](https://weibo.com/ruguying)
-16. [知乎](https://www.zhihu.com/people/ruguyingping/posts)
-17. [哔哩哔哩](https://space.bilibili.com/1450300)
-18. [豆瓣](https://www.douban.com/people/lousi/)
-19. [简书](https://www.jianshu.com/u/05b15afb7cf9)
-20. [AcFan](https://www.acfun.cn/u/14440889)
-21. [抖音](https://www.douyin.com/user/MS4wLjABAAAAPDqAI6WgltTcsPoioaYMB9b_z9M072vq0dd1oVv8dSw)
-22. [快手](https://v.kuaishouapp.com/s/hOIlTIB8)
-23. [小红书](https://www.xiaohongshu.com/user/profile/5744eecc50c4b4015f51194c)
-24. [腾讯视频](https://v.qq.com/s/videoplus/417605172)
-25. [爱奇艺号](https://mp.iqiyi.com/h5/space/1010851961/dailyTrend)
-26. [优酷号](https://m.youku.com/profile?uid=UMTMwODE2NzU2OA==&callApp=1)
-27. [喜马拉雅](https://www.ximalaya.com/zhubo/1048779)
-28. [猫眼电影](https://m.maoyan.com/apollo/profile/545668?userCode=ZKWq87LJNMv9xvnB2R2zByAomkVp&from=canary)
-29. [网易云音乐](https://music.163.com/#/user/home?id=717909)
-30. [itunes播客](http://rss.lizhi.fm/rss/158709672.xml)
+### 二、需要一个可以实时预览图片的Markdown编辑器
 
-#### 分类标签
+要求：使用方便，能预览，最好能快捷键上传图片到图床。在线版或者软件均可。
+1. 软件typora. 非常方便地和picgo集成，慢且卡顿，暂弃。
+   可选：mdnice(网页版免费)  MarkText (软件) Md2All(图床只能用七牛云) 作业部落、BlogHelper(软件),sapic(自建图床服务器)
+2. wangedit.就是一个js库，有图片上传的接口但是没有现成的集成picgo的代码。
+      [在线编辑器](https://www.wangeditor.com/demo/zh-CN/simple-mode.html)
 
-1.  [影视](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1760550691569188866)
-2.  [陈情令忘羡篇](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1302546652204597248)
-3.  [陈情令精品集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1302589274168197120)
-4.  [自媒体教学专栏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1549547427186130948)
-5.  [电视剧](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1302559377907482624)
-6.  [电影](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1312448474440499200)
-7.  [综艺](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1318228364804718592)
-8.  [娱乐](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1737186150462570498)
-9.  [美剧](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1732572478507368448)
-10. [韩剧](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1732562497439580169)
+### 三、需要一个尽可能和公众号展示效果相似的博客系统
 
-#### 加粉丝群
+要求：可分类，可排序，可搜索，最好每篇文章能显示一个缩略图。
+1. Hexo 主题选next。据说文章越多这个系统会变慢，暂弃。
+2. Hugo 主题选stack,even, loveit
+3. jekyll
+4. Docsify 没搞明白如何根据网盘文件生成sidebar,暂弃
+5. Nextra 一键部署到[vercel](https://nextjs-two-sage-90.vercel.app/)上
+6. OneManager 集成网盘OneDrive,一键部署到[Vercel](https://39h02cf8e4sr7.cfc-execute.su.baidubce.com/)
 
-1.  微博群请直接搜“入骨影评”
-2.  微信群请在公众号菜单点击“加群”
+### 四、备选方案：Discourse论坛变为博客
 
-#### 主要投稿者(排名不分先后)
-
-1.  [隔世守望](https://www.douban.com/people/204031023/notes)
-2.  [长安某](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1302542107525218305)
-3.  [茜曦惜夕](https://weibo.com/heruqian)
-4.  [九七](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1735133566230904835)
-5.  [梅洛哥](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1727304447229214720)
-6.  [探火](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1743221142389047297)
-7.  [石槑](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5OTEzNjY4OQ==&action=getalbum&album_id=1717148730014875650)
